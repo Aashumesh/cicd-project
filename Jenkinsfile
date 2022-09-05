@@ -1,4 +1,4 @@
-pipeline {
+ pipeline {
   
   agent any
  
@@ -8,7 +8,7 @@ pipeline {
           
         steps 
         {
-            sh  'docker pull rohitkhot10/nodejs:latest'
+            sh  'docker pull ashwinimesh/node:latest'
           
         }
        }
@@ -18,14 +18,14 @@ pipeline {
              
          steps 
          {
-             sh "docker run -d -p 3019:3000 rohitkhot10/nodejs"
+             sh "docker run -d -p 3019:3000 ashwinimesh/node:latest"
  
           }
         }
  stage('Run Docker container on remote hosts') {
              
             steps {
-                sh 'ssh -v -o StrictHostKeyChecking=no  root@172.31.42.8 docker run -d -p 3019:3000 rohitkhot10/nodejs:latest'
+                sh 'ssh -v -o StrictHostKeyChecking=no  root@172.31.34.89 docker run -d -p 3019:3000 ashwinimesh/node:latest'
  
             }
         }
